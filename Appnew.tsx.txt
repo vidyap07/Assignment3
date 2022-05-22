@@ -1,0 +1,78 @@
+import React, { useState, useEffect } from 'react';
+
+const url = 'https://jsonplaceholder.typicode.com/posts';
+
+export default function App() {
+  const [posts, setPosts] = useState([]);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    fetch(url)
+      .then((response) => {
+        if (response.ok) return response.json();
+        throw new Error('Something went wrong while requesting posts');
+      })
+      .then((posts) => setPosts(posts))
+      .catch((error) => setError(error.message));
+  }, []);
+
+  if (error) return <h1>{error}</h1>;
+
+  return <div></div>;
+}
+
+function Post(props) {
+  const { id, title, body } = props.data;
+  return (
+    <div className="post">
+      <small>{id}</small>
+      <h1>{title}</h1>
+      <p>{body}</p>
+    </div>
+  );
+}
+
+
+function Page({ data, RenderComponent, title, pageLimit, dataLimit }) {
+  const [pages] = useState(Math.round(data.length / dataLimit));
+  const [currentPage, setCurrentPage] = useState(1);
+
+  function goToNextPage() {
+     // not yet implemented
+  }
+
+  function goToPreviousPage() {
+     // not yet implemented
+  }
+
+  function changePage(event) {
+     // not yet implemented
+  }
+
+ 
+
+  return (
+    ...
+  );
+}
+
+function goToNextPage() {
+  setCurrentPage((page) => page + 1);
+}
+
+function goToPreviousPage() {
+  setCurrentPage((page) => page - 1);
+}
+
+function changePage(event) {
+  const pageNumber = Number(event.target.textContent);
+  setCurrentPage(pageNumber);
+}
+
+componentDidMount() {
+  window.scrollTo(0, 0)
+}
+
+useEffect(() => {
+  window.scrollTo(0, 0)
+}, [])

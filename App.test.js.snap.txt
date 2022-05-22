@@ -1,0 +1,12 @@
+exports[`test Input with label component snapshot testing 1`] = `
+<div>
+  <label>
+    Search Label
+     
+  </label>
+  <input
+    type="text"
+    value="React"
+  />
+</div>
+`;
